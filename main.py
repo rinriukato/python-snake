@@ -35,14 +35,13 @@ while game_is_on:
     snake.move()
     # Check if snake is colliding with tail
     if snake.check_tail_collision():
-        scoreboard.end_game_text()
-        game_is_on = False
+        scoreboard.reset()
+        snake.reset()
 
     # Check collisions with screen
     if snake.check_out_of_bounds():
-        # snake.destroy_self()
-        scoreboard.end_game_text()
-        game_is_on = False
+        scoreboard.reset()
+        snake.reset()
 
     # Do collision with food
     if snake.head.distance(food) < COLLISION_DIST_IN_PX:

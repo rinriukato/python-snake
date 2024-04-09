@@ -6,8 +6,9 @@ RIGHT = 0
 UP = 90
 LEFT = 180
 DOWN = 270
-SCREEN_BOUNDS = 280
+SCREEN_BOUNDS = 300
 TAIL_COLLISION_DIST = 10
+
 
 class Snake:
     def __init__(self):
@@ -77,6 +78,10 @@ class Snake:
 
         return False
 
-
-    def destroy_self(self):
+    def reset(self):
+        for seg in self.snake_body:
+            seg.goto(1000, 1000)
         self.snake_body.clear()
+        self.create_snake()
+        self.head = self.snake_body[0]
+
